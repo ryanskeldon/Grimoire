@@ -17,44 +17,44 @@ _addon.name = 'Grimoire'
 _addon.author = 'psykad'
 _addon.commands = {'grimoire'}
 
-require "tables"
-require "strings"
+require 'tables'
+require 'strings'
 
-res = require("resources")
+res = require('resources')
 
 local skillchains = {
-	[288] = {id=288,english="Light",elements={"Light","Fire","Thunder","Wind"}},
-	[289] = {id=289,english="Darkness",elements={"Dark","Earth","Water","Ice"}},
-	[290] = {id=290,english="Gravitation",elements={"Dark","Earth"}},
-	[291] = {id=291,english="Fragmentation",elements={"Thunder","Wind"}},
-	[292] = {id=292,english="Distortion",elements={"Water","Ice"}},
-	[293] = {id=293,english="Fusion",elements={"Light","Fire"}},
-	[294] = {id=294,english="Compression",elements={"Dark"}},
-	[295] = {id=295,english="Liquefication",elements={"Fire"}},
-	[296] = {id=296,english="Induration",elements={"Ice"}},
-	[297] = {id=297,english="Reverberation",elements={"Water"}},
-	[298] = {id=298,english="Transfixion", elements={"Light"}},
-	[299] = {id=299,english="Scission",elements={"Earth"}},
-	[300] = {id=300,english="Detonation",elements={"Wind"}},
-	[301] = {id=301,english="Impaction",elements={"Thunder"}}
+	[288] = {id=288,english='Light',elements={'Light','Fire','Thunder','Wind'}},
+	[289] = {id=289,english='Darkness',elements={'Dark','Earth','Water','Ice'}},
+	[290] = {id=290,english='Gravitation',elements={'Dark','Earth'}},
+	[291] = {id=291,english='Fragmentation',elements={'Thunder','Wind'}},
+	[292] = {id=292,english='Distortion',elements={'Water','Ice'}},
+	[293] = {id=293,english='Fusion',elements={'Light','Fire'}},
+	[294] = {id=294,english='Compression',elements={'Dark'},
+	[295] = {id=295,english='Liquefication',elements={'Fire'},
+	[296] = {id=296,english='Induration',elements={'Ice'},
+	[297] = {id=297,english='Reverberation',elements={'Water'},
+	[298] = {id=298,english='Transfixion', elements={'Light'},
+	[299] = {id=299,english='Scission',elements={'Earth'},
+	[300] = {id=300,english='Detonation',elements={'Wind'},
+	[301] = {id=301,english='Impaction',elements={'Thunder'}
 }
 
 local magic_tiers = {
-	[1] = {suffix=""},
-	[2] = {suffix="II"},
-	[3] = {suffix="III"},
-	[4] = {suffix="IV"},
-	[5] = {suffix="V"},
-	[6] = {suffix="VI"}
+	[1] = {suffix=''},
+	[2] = {suffix='II'},
+	[3] = {suffix='III'},
+	[4] = {suffix='IV'},
+	[5] = {suffix='V'},
+	[6] = {suffix='VI'}
 }
 
 local spell_priorities = {
-	[1] = {element="Thunder"},
-	[2] = {element="Ice"},
-	[3] = {element="Wind"},
-	[4] = {element="Fire"},
-	[5] = {element="Water"},
-	[6] = {element="Earth"}
+	[1] = {element='Thunder'},
+	[2] = {element='Ice'},
+	[3] = {element='Wind'},
+	[4] = {element='Fire'},
+	[5] = {element='Water'},
+	[6] = {element='Earth'}
 }
 
 local storms = { 
@@ -77,14 +77,14 @@ local storms = {
 }
 
 local elements = {
-	['Light'] = {spell=nil,helix="Luminohelix"},
-	['Dark'] = {spell=nil,helix="Noctohelix"},
-	['Fire'] = {spell="Fire",helix="Pyrohelix"},
-	['Ice'] = {spell="Blizzard",helix="Cryohelix"},
-	['Wind'] = {spell="Aero",helix="Anemohelix"},
-	['Earth'] = {spell="Stone",helix="Geohelix"},
-	['Thunder'] = {spell="Thunder",helix="Ionohelix"},
-	['Water'] = {spell="Water",helix="Hydrohelix"}
+	['Light'] = {spell=nil,helix='Luminohelix'},
+	['Dark'] = {spell=nil,helix='Noctohelix'},
+	['Fire'] = {spell='Fire',helix='Pyrohelix'},
+	['Ice'] = {spell='Blizzard',helix='Cryohelix'},
+	['Wind'] = {spell='Aero',helix='Anemohelix'},
+	['Earth'] = {spell='Stone',helix='Geohelix'},
+	['Thunder'] = {spell='Thunder',helix='Ionohelix'},
+	['Water'] = {spell='Water',helix='Hydrohelix'}
 }
 
 local last_skillchain = nil
