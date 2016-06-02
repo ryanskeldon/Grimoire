@@ -29,14 +29,14 @@ local skillchains = {
 	[291] = {id=291,english='Fragmentation',elements={'Thunder','Wind'}},
 	[292] = {id=292,english='Distortion',elements={'Water','Ice'}},
 	[293] = {id=293,english='Fusion',elements={'Light','Fire'}},
-	[294] = {id=294,english='Compression',elements={'Dark'},
-	[295] = {id=295,english='Liquefication',elements={'Fire'},
-	[296] = {id=296,english='Induration',elements={'Ice'},
-	[297] = {id=297,english='Reverberation',elements={'Water'},
-	[298] = {id=298,english='Transfixion', elements={'Light'},
-	[299] = {id=299,english='Scission',elements={'Earth'},
-	[300] = {id=300,english='Detonation',elements={'Wind'},
-	[301] = {id=301,english='Impaction',elements={'Thunder'}
+	[294] = {id=294,english='Compression',elements={'Dark'}},
+	[295] = {id=295,english='Liquefication',elements={'Fire'}},
+	[296] = {id=296,english='Induration',elements={'Ice'}},
+	[297] = {id=297,english='Reverberation',elements={'Water'}},
+	[298] = {id=298,english='Transfixion', elements={'Light'}},
+	[299] = {id=299,english='Scission',elements={'Earth'}},
+	[300] = {id=300,english='Detonation',elements={'Wind'}},
+	[301] = {id=301,english='Impaction',elements={'Thunder'}}
 }
 
 local magic_tiers = {
