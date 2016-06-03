@@ -32,7 +32,7 @@ local skillchains = {
 	[292] = {id=292,english='Distortion',elements={'Water','Ice'}},
 	[293] = {id=293,english='Fusion',elements={'Light','Fire'}},
 	[294] = {id=294,english='Compression',elements={'Dark'}},
-	[295] = {id=295,english='Liquefication',elements={'Fire'}},
+	[295] = {id=295,english='Liquefaction',elements={'Fire'}},
 	[296] = {id=296,english='Induration',elements={'Ice'}},
 	[297] = {id=297,english='Reverberation',elements={'Water'}},
 	[298] = {id=298,english='Transfixion', elements={'Light'}},
@@ -132,10 +132,10 @@ windower.register_event('addon command', function(...)
 		
 		-- If nothing was found for the current weather element, try the day element.
 		if skillchain_element == nil then
-			element = get_day_element()
+			day_element = get_day_element()
 			
-			if T(last_skillchain.elements):contains(weather_element) then
-				skillchain_element = weather_element
+			if T(last_skillchain.elements):contains(day_element) then
+				skillchain_element = day_element
 			end
 		end
 		
