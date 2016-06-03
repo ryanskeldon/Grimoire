@@ -14,7 +14,7 @@
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ]]
-_addon.version = '1.0.1'
+_addon.version = '1.0.2'
 _addon.name = 'Grimoire'
 _addon.author = 'psykad'
 _addon.commands = {'grimoire'}
