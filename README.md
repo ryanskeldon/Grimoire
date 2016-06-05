@@ -10,8 +10,11 @@ The logic behind Grimoire goes through the following checks:
 * If no weather, or matching day element, go by elemental priority list for elements in the skillchain.
 
 ### Commands
-`cast spell|helix [1-6]` - Casts a spell|helix at the provided tier.
+`cast spell|helix|ga|ja|ra [1-6]` - Casts a spell|helix|-ga|-ja|-ra at the provided tier.
 
-Example - `cast spell 5` or `cast helix 2`
+Examples 
+* `cast spell 5`
+* `cast helix 2`
+* `cast ga 3`
 
-*Note: using a tier higher than what is available will not cast anything, e.g. `cast helix 3` will try to cast a tier III helix spell regardless if spell doesn't exist.*
+*Note: using a tier higher than what is available, e.g. `cast helix 3`, will try to cast a tier III helix spell regardless if spell exists or not.*
