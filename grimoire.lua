@@ -14,7 +14,7 @@
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ]]
-_addon.version = '1.0.2'
+_addon.version = '1.1.0'
 _addon.name = 'Grimoire'
 _addon.author = 'psykad'
 _addon.commands = {'grimoire'}
@@ -79,14 +79,14 @@ local storms = {
 }
 
 local elements = {
-	['Light'] = {spell=nil,helix='Luminohelix'},
-	['Dark'] = {spell=nil,helix='Noctohelix'},
-	['Fire'] = {spell='Fire',helix='Pyrohelix'},
-	['Ice'] = {spell='Blizzard',helix='Cryohelix'},
-	['Wind'] = {spell='Aero',helix='Anemohelix'},
-	['Earth'] = {spell='Stone',helix='Geohelix'},
-	['Thunder'] = {spell='Thunder',helix='Ionohelix'},
-	['Water'] = {spell='Water',helix='Hydrohelix'}
+	['Light'] = {spell=nil,helix='Luminohelix',ga=nil,ja=nil,ra=nil},
+	['Dark'] = {spell=nil,helix='Noctohelix',ga=nil,ja=nil,ra=nil},
+	['Fire'] = {spell='Fire',helix='Pyrohelix',ga='Firaga',ja='Firaja',ra='Fira'},
+	['Ice'] = {spell='Blizzard',helix='Cryohelix',ga='Blizzaga',ja='Blizzaja',ra='Blizzara'},
+	['Wind'] = {spell='Aero',helix='Anemohelix',ga='Aeroga',ja='Aeroja',ra='Aerora'},
+	['Earth'] = {spell='Stone',helix='Geohelix',ga='Stonega',ja='Stoneja',ra='Stonera'},
+	['Thunder'] = {spell='Thunder',helix='Ionohelix',ga='Thundaga',ja='Thundaja',ra='Thundara'},
+	['Water'] = {spell='Water',helix='Hydrohelix',ga='Waterga',ja='Waterja',ra='Watera'}
 }
 
 local last_skillchain = nil
@@ -96,7 +96,7 @@ windower.register_event('addon command', function(...)
 	
 	local command = arg[1]
 	
-	if command == "cast" then
+	if command == 'cast' then
 		-- Verify a skillchain actually happened at some point.	
 		if last_skillchain == nil then 
 			windower.console.write(_addon.name..': No skillchain found.')
@@ -108,7 +108,7 @@ windower.register_event('addon command', function(...)
 		if spell_type == nil then
 			windower.console.write(_addon.name..': No spell type defined.')
 			return
-		elseif not T{"spell", "helix"}:contains(spell_type) then
+		elseif not T{'spell', 'helix', 'ga', 'ja', 'ra'}:contains(spell_type) then
 			-- Invalid type
 			windower.console.write(_addon.name..': Invalid type specified.')
 			return
