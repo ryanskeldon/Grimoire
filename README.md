@@ -13,8 +13,8 @@ The logic behind Grimoire goes through the following checks:
 `cast spell|helix|ga|ja|ra [1-6]` - Casts a spell|helix|-ga|-ja|-ra at the provided tier.
 
 Examples 
-* `cast spell 5`
-* `cast helix 2`
-* `cast ga 3`
+* `grimoire cast spell 5`
+* `grimoire cast helix 2`
+* `grimoire cast ga 3`
 
 *Note: using a tier higher than what is available, e.g. `cast helix 3`, will try to cast a tier III helix spell regardless if spell exists or not.*
