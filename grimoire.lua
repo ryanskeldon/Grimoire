@@ -14,7 +14,7 @@
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ]]
-_addon.version = '1.1.0'
+_addon.version = '1.1.0-dev1'
 _addon.name = 'Grimoire'
 _addon.author = 'psykad'
 _addon.commands = {'grimoire'}
@@ -164,22 +164,27 @@ windower.register_event('addon command', function(...)
 end)
 
 windower.register_event('incoming chunk', function(id, original)
-	if id == 0x28 then
-		local action_packet = windower.packets.parse_action(original)
+	-- Leave now if it's not the right id.
+	if id ~- 0x28 then return end
+	
+	local action_packet = windower.packets.parse_action(original)
+	
+	for _, target in pairs(action_packet.targets) do
+		local battle_target = windower.ffxi.get_mob_by_target("bt")
 		
-		for _, target in pairs(action_packet.targets) do
-			local battle_target = windower.ffxi.get_mob_by_target("bt")
-			
-			if battle_target ~= nil and target.id == battle_target.id then
-				for _, action in pairs(target.actions) do
-					if action.add_effect_message > 287 and action.add_effect_message < 302 then
-						last_skillchain = skillchains[action.add_effect_message]
-						windower.add_to_chat(8, _addon.name..': Skillchain '..last_skillchain.english)
-						windower.send_command('timers c "Skillchain: '..last_skillchain.english..'" 5 down')
-					end
+		-- Make sure the action occurred on the player's current battle target.
+		if battle_target ~= nil and target.id == battle_target.id then
+			for _, action in pairs(target.actions) do
+				-- Check if the action was a skillchain.
+				if action.add_effect_message > 287 and action.add_effect_message < 302 then
+					last_skillchain = skillchains[action.add_effect_message]
+					windower.add_to_chat(8, _addon.name..': Skillchain '..last_skillchain.english)
+					
+					-- Start a countdown timer for the magic burst window.
+					windower.send_command('timers c "Skillchain: '..last_skillchain.english..'" 5 down')
 				end
-			end			
-		end
+			end
+		end			
 	end
 end)
 
