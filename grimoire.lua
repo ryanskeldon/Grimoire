@@ -14,7 +14,7 @@
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ]]
-_addon.version = '1.1.0-dev1'
+_addon.version = '1.1.0-dev2'
 _addon.name = 'Grimoire'
 _addon.author = 'psykad'
 _addon.commands = {'grimoire'}
@@ -165,7 +165,7 @@ end)
 
 windower.register_event('incoming chunk', function(id, original)
 	-- Leave now if it's not the right id.
-	if id ~- 0x28 then return end
+	if id ~= 0x28 then return end
 	
 	local action_packet = windower.packets.parse_action(original)
 	
